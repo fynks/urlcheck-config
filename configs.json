@@ -1,0 +1,48 @@
+{
+  "Warning! Non-ASCII characters found.": {
+    "regex": "[^\\p{ASCII}]",
+    "description": "Warns if the URL contains non-ASCII characters, which may be used for phishing or obfuscation."
+  },
+  "HTTP link. Automatically converted to HTTPS.": {
+    "regex": "^http:\/\/",
+    "replacement": "https:\/\/",
+    "automatic": "true",
+    "description": "Automatically replaces HTTP with HTTPS for secure connections."
+  },
+  "Missing scheme. HTTPS added automatically.": {
+    "regex": "^(?!.*:)",
+    "replacement": "https:\/\/$0",
+    "automatic": "true",
+    "description": "Automatically adds an HTTPS scheme if none is provided."
+  },
+  "Invalid http scheme capitalization.": {
+    "regex": "^(?!http:)[hH][tT]{2}[pP]:(.*)",
+    "replacement": "http:$1",
+    "automatic": "true",
+    "description": "Automatically corrects improperly capitalized HTTP schemes."
+  },
+  "Invalid https scheme capitalization.": {
+    "regex": "^(?!https:)[hH][tT]{2}[pP][sS]:(.*)",
+    "replacement": "https:$1",
+    "automatic": "true",
+    "description": "Automatically corrects improperly capitalized HTTPS schemes."
+  },
+  "Link contains tracking parameters. Automatically removed.": {
+    "regex": "[\\?&](utm_[^=]+|fbclid|gclid|dclid|ref|trk|campaign)=[^&]+",
+    "replacement": "",
+    "automatic": "true",
+    "description": "Automatically removes common tracking parameters from URLs to enhance privacy."
+  },
+  "Potential phishing URL detected.": {
+    "regex": ".*[\\u0400-\\u04FF\\u0500-\\u052F\\u2DE0-\\u2DFF\\uA640-\\uA69F].*",
+    "description": "Detects URLs using Cyrillic characters, which are often used in phishing attacks."
+  },
+  "Unicode homoglyph detected.": {
+    "regex": "(?i)(.*[Α-Ωα-ωА-яѐ-ӿא-תء-ي٠-٩一-鿿]+.*)",
+    "description": "Detects homoglyphs in URLs that mimic legitimate domains (e.g., 'gооgle.com')."
+  },
+  "Shortened URL detected.": {
+    "regex": "^https?:\/\/(bit\\.ly|t\\.co|tinyurl\\.com|goo\\.gl|ow\\.ly|is\\.gd|buff\\.ly|adf\\.ly)\/.*",
+    "description": "Warns about shortened URLs, which could redirect to malicious sites."
+  }
+}
